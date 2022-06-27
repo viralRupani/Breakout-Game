@@ -19,4 +19,3 @@ class Paddle(turtle.Turtle):
         if self.xcor() != 300:
             new_x_cor = self.xcor() + 20
             self.goto(new_x_cor, self.ycor())
-            print(self.xcor())
