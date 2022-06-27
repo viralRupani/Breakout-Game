@@ -2,6 +2,7 @@ from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 from walls import Walls
+from scoreboard import ScoreBoard
 import time
 
 WALL_COLOR = ['green', 'yellow', 'orange', 'red']
@@ -12,6 +13,7 @@ screen.bgcolor('black')
 
 paddle = Paddle()
 ball = Ball()
+scoreboard = ScoreBoard()
 
 screen.listen()
 screen.onkey(paddle.go_left, 'Left')
@@ -35,17 +37,24 @@ while game_is_on:
     screen.update()
     ball.move()
     time.sleep(ball.move_speed)
+    for wall in wall_list:
+        if ball.distance(wall) < 30:
+            ball.bounce_y()
+            wall.reset()
+
     if ball.xcor() > 300 or ball.xcor() < -300:
         ball.bounce_x()
     elif ball.ycor() > 280:
         ball.bounce_y()
     elif ball.ycor() < -300:
         ball.respawn()
+        scoreboard.life_count -= 1
+        scoreboard.update()
     elif ball.distance(paddle) < 30:
         ball.bounce_y()
 
-    for wall in wall_list:
-        if ball.distance(wall) < 30:
-            ball.bounce_y()
-            wall.reset()
+    if scoreboard.life_count < 0:
+        game_is_on = False
+        scoreboard.game_over()
+
 screen.exitonclick()

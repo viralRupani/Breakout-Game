@@ -28,5 +28,5 @@ class Ball(turtle.Turtle):
 
     def respawn(self):
         self.goto(random.randint(-280, 280), -220)
-        self.bounce_y()
         self.bounce_x()
+        self.bounce_y()
