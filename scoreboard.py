@@ -13,7 +13,7 @@ class ScoreBoard(turtle.Turtle):
 
     def update(self):
         self.clear()
-        self.write(f'Remaining Count: {self.life_count}', align='center',  font=('Arial', 12, 'bold'))
+        self.write(f'Remaining Balls: {self.life_count}', align='center',  font=('Arial', 12, 'bold'))
 
     def game_over(self):
         self.clear()
