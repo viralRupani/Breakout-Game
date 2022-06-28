@@ -13,9 +13,9 @@ class ScoreBoard(turtle.Turtle):
 
     def update(self):
         self.clear()
-        self.write(f'Remaining Count: {self.life_count}', align='left')
+        self.write(f'Remaining Count: {self.life_count}', align='center',  font=('Arial', 12, 'bold'))
 
     def game_over(self):
         self.clear()
         self.goto(0, -100)
-        self.write(f'Game Over', align='left')
+        self.write(f'Game Over', align='center', font=('Arial', 25, 'bold'))
